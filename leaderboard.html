@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EcoLens Leaderboard</title>
+
+<link rel="stylesheet" href="leaderboard.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<div class="leaderboard-container">
+
+  <!-- HEADER -->
+  <div class="leaderboard-header">
+    <h1>🏆 Eco Leaderboard</h1>
+    <p>Top eco warriors making real-world impact</p>
+  </div>
+
+  <!-- PODIUM -->
+  <div class="podium">
+
+    <div class="podium-card second">
+      <div class="rank">2</div>
+      <h3 id="secondName">Ananya</h3>
+      <p id="secondPoints">420 pts</p>
+    </div>
+
+    <div class="podium-card first">
+      <div class="rank">1</div>
+      <h3 id="firstName">You</h3>
+      <p id="firstPoints">462 pts</p>
+    </div>
+
+    <div class="podium-card third">
+      <div class="rank">3</div>
+      <h3 id="thirdName">Rahul</h3>
+      <p id="thirdPoints">350 pts</p>
+    </div>
+  </div>
+
+  <!-- FULL LIST -->
+  <div class="leaderboard-list">
+    <h2>Full Rankings</h2>
+    <div id="leaderboardList"></div>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+
+<script>
+/* Dynamic Leaderboard Sync */
+
+let user = localStorage.getItem("user") || "You";
+let impactScore = parseInt(localStorage.getItem("impact")) || 0;
+
+let data = [
+  { name: user, points: impactScore },
+  { name: "Ananya", points: 420 },
+  { name: "Rahul", points: 350 },
+  { name: "Vikram", points: 280 }
+];
+
+data.sort((a,b)=> b.points - a.points);
+
+/* Update Podium */
+document.getElementById("firstName").innerText = data[0].name;
+document.getElementById("firstPoints").innerText = data[0].points + " pts";
+
+document.getElementById("secondName").innerText = data[1].name;
+document.getElementById("secondPoints").innerText = data[1].points + " pts";
+
+document.getElementById("thirdName").innerText = data[2].name;
+document.getElementById("thirdPoints").innerText = data[2].points + " pts";
+
+/* Update Full List */
+let list = document.getElementById("leaderboardList");
+
+list.innerHTML = data.map((p,i)=>`
+  <div class="leader-item">
+    <span class="leader-rank">#${i+1} ${p.name}</span>
+    <span class="leader-points">${p.points} pts</span>
+  </div>
+`).join("");
+</script>
+
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EcoLens Dashboard</title>
+
+<link rel="stylesheet" href="dashboard.css">
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@latest"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tensorflow-models/mobilenet"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<nav class="nav">
+  <div class="logo">
+    🌿 <span>EcoLens</span>
+  </div>
+  <div class="nav-links">
+    <a href="leaderboard.html">Leaderboard</a>
+    <a href="impact.html">Impact</a>
+  </div>
+</nav>
+
+<div class="container">
+
+  <div class="welcome-card">
+    <h1>Welcome Back, <span id="userDisplay"></span> 👋</h1>
+    <p>Track your eco journey and reduce hidden packaging waste.</p>
+  </div>
+
+  <div class="stats">
+    <div class="card">
+      <h3>Total Waste</h3>
+      <p><span id="waste"></span> g</p>
+    </div>
+
+    <div class="card">
+      <h3>Eco Points</h3>
+      <p><span id="points"></span></p>
+    </div>
+
+    <div class="card">
+      <h3>🔥 Streak</h3>
+      <p><span id="streak"></span> days</p>
+    </div>
+
+    <div class="card">
+      <h3>🌍 CO₂ Saved</h3>
+      <p><span id="co2"></span> kg</p>
+    </div>
+  </div>
+
+  <div class="action-section">
+    <h2>Log Waste Activity</h2>
+    <div class="buttons">
+      <button onclick="logWaste('food')">🍱 Food Delivery</button>
+      <button onclick="logWaste('snack')">🍫 Snack</button>
+      <button onclick="logWaste('shopping')">🛍 Shopping</button>
+    </div>
+  </div>
+  <div class="scan-section">
+  <h2>📷 AI Waste Scanner</h2>
+
+  <input type="file" accept="image/*" onchange="previewImage(event)">
+  
+  <img id="preview" width="200" style="display:none; margin-top:10px;" />
+
+  <button onclick="scanWasteAI()">Scan Waste</button>
+
+  <p id="scanResult"></p>
+  </div>
+
+  <div class="chart-section">
+    <h2>📊 Waste Analytics</h2>
+    <canvas id="wasteChart"></canvas>
+  </div>
+
+  <div class="badge-section">
+    <h2>🏆 Achievements</h2>
+    <div id="badges" class="badges"></div>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
+

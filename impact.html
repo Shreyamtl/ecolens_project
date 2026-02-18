@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EcoLens Impact</title>
+
+<link rel="stylesheet" href="impact.css">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+<nav class="nav">
+  <div class="logo">🌿 EcoLens</div>
+  <div class="nav-links">
+    <a href="dashboard.html">← Back to Dashboard</a>
+  </div>
+</nav>
+
+<div class="container">
+
+  <div class="impact-hero">
+    <h1>🌍 Your Environmental Impact</h1>
+    <p>See how your daily actions contribute to real-world change.</p>
+  </div>
+
+  <div class="impact-stats">
+    <div class="impact-card">
+      <h3>🌳 Trees Supported</h3>
+      <p id="trees">0</p>
+    </div>
+
+    <div class="impact-card">
+      <h3>♻ Waste Reduced</h3>
+      <p id="wasteReduced">0 g</p>
+    </div>
+
+    <div class="impact-card">
+      <h3>🌫 CO₂ Offset</h3>
+      <p id="coSaved">0 kg</p>
+    </div>
+  </div>
+
+  <div class="progress-section">
+    <h2>🎯 Monthly Goal Progress</h2>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressFill"></div>
+    </div>
+    <p id="goalText"></p>
+  </div>
+
+  <div class="ngo-section">
+    <h2>🤝 NGO Partnership Impact</h2>
+    <p id="ngoImpact"></p>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+
+<script>
+/* Demo Animation (remove if already handled in script.js) */
+
+let progress = 70; // example %
+document.getElementById("progressFill").style.width = progress + "%";
+document.getElementById("goalText").innerText = progress + "% of monthly waste reduction goal achieved!";
+
+/* Demo numbers */
+document.getElementById("trees").innerText = "12";
+document.getElementById("wasteReduced").innerText = "2450";
+document.getElementById("coSaved").innerText = "8.4";
+</script>
+
+</body>
+</html>
